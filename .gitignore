@@ -1,0 +1,11 @@
+.svn
+.idea
+.gradle
+/build
+.gitignore
+local.properties
+*.iml
+README.md
+/captures
+.DS_Store
+*/.DS_Store
