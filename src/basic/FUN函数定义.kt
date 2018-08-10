@@ -1,5 +1,8 @@
 package basic
 
+/**
+ * fun声明函数时，此函数默认为final修饰，不能被子类重写
+ */
 fun main(args: Array<String>) {
     println("hello world !")
     sum0(1, 2)

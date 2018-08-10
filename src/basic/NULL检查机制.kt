@@ -16,4 +16,7 @@ fun main(args: Array<String>) {
     val ages = age?.toInt()?: -1 //age为空返回-1
     println("ages = $ages")
 
+
+    val e = null
+    println(e.toString())
 }

@@ -5,10 +5,10 @@ package basic
  *
  */
 fun main(args: Array<String>) {
-//    classFunc()
+    classFunc()
 //    classNestFunc()
 //    classInnerFunc()
-    classAnonymousFunc()
+//    classAnonymousFunc()
 
 
     /**
@@ -26,7 +26,6 @@ fun main(args: Array<String>) {
                 public      // 所有调用的地方都可见
                 internal    // 同一个模块中可见
      */
-
 }
 
 /**
@@ -37,10 +36,11 @@ private fun classFunc() {
     println(site.name)
     println(site.age)
 
-    var person = Person("666")//主构造
-    var person1 = Person("666", 18)//次构造
-    println("次构造赋值age = ${person1.age}")
-
+    val person = Person("666",2)//主构造
+    val person1 = Person("666", 3,18)//次构造1
+    val person2 = Person("666", 3,18,100)//次构造2
+    println("person1次构造成员age = ${person1.age}")
+//    println("person2次构造成员age = ${person2.score}")  //报错: score非成员属性
 
     println("延时加载name = ${person.name}")
     person.lastName = "wang"
@@ -55,7 +55,10 @@ private fun classFunc() {
     println("height = ${person.height}")
 }
 
-class Runoob { // 类名为 basic.Runoob
+/************************************类定义**********************************/
+
+
+class Runoob { // 类名
 
     //成员属性 var 声明为可变的 val 声明为不可变(只读 不能设置setter)
     var name: String = "wsj"
@@ -71,40 +74,63 @@ class Runoob { // 类名为 basic.Runoob
 
 class Empty //空类
 
+/************************************构造函数**********************************/
+
+
 /**
- * 一个 主构造器 位于类名之后
+ * 允许有一个主构造函数和多个二级构造函数（辅助构造函数）
+ *      1.主构造器位于类名之后
+ *          无注释符或默认修饰符(public)时constructor关键字可省略  构造函数中的参数若不是var 默认是val只读
+ *      2.二级构造器/辅助构造器
+ *          constructor(参数列表)
+ *
  */
-class Person(simple: String) {
+class Person(var simple: String,sex:Int) {
     //  var allByDefault: Int? // 错误: 需要一个初始化语句, 默认实现了 getter 和 setter 方法
     var initialized = 1 //类型为Int 默认实现setter 和 getter
     //  val simple: String? // 错误: 必须在构造函数中初始化  类型为String 默认实现getter
     val inferredType = 1   // 类型为 Int 类型,默认实现 getter
     lateinit var name: String
 
-    //因为Kotlin会使用null来对每一个用lateinit修饰的属性做初始化
-    // 基础类型是没有null类型
-    //lateinit不能修饰原始类型
-
+    /**
+     *  因为Kotlin会使用null来对每一个用lateinit修饰的属性做初始化
+     *  基础类型是没有null类型
+     *
+     *  lateinit不能修饰原始类型
+     */
 //  lateinit var age:Int  //错误
     var age:Int? = 0
 
 
     /**
      * 次构造函数 (晚于init初始化代码块)
+     *      类已有主构造，则每个辅助构造需要通过另一个辅助构造直接或间接地委派给主构造
+     *      使用this关键字对同一类的另一个构造函数进行委派
      */
-    constructor(simple: String, age: Int) : this(simple) {
-        println("次构造函数 ${age}")
-        this.age = age
+    constructor(simple: String,sex: Int, age: Int) : this(simple,sex) {
+        println("次构造函数1 ${age}")
+        this.age = age + 1
     }
 
     /**
-     * 初始化代码段
+     * 构造函数参数列表设置默认值 用法同python
+     */
+    constructor(simple: String,sex: Int,age: Int,score:Int = 120):this(simple, sex, age){
+        println("次构造函数2 ${score}")
+    }
+
+    /**
+     * 初始化代码段 使用init关键字 可以使用构造函数中的参数
      */
     init {
-        println("初始化simple: ${simple}")
+        simple = "重命名"
+//        sex = 2 //只读
+        println("初始化代码块: simple = ${simple} sex = ${sex} age = ${age}")
         name = simple
     }
 
+
+    /************************************setter and getter**********************************/
     /**
      * 两个可变变量 lastName 和 no， field表示接收的变量 用于属性的访问器
      * lastName 修改了 getter 方法，
@@ -131,6 +157,8 @@ class Person(simple: String) {
 
     var height: Float = 145.4f
         private set //私有化
+
+
 }
 
 /************************************嵌套类**********************************/
