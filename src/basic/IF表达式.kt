@@ -5,7 +5,7 @@ fun main(args: Array<String>) {
     var b:Int = 3
 
     //代替三元运算符
-//    var max = if(a < b) a else b
+    var c = if(a < b) a else b
 
     // IF 表达式的结果赋值给一个变量
     val max = if (a > b) {

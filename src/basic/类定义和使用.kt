@@ -125,8 +125,8 @@ class Person(var simple: String,sex:Int) {
     init {
         simple = "重命名"
 //        sex = 2 //只读
-        println("初始化代码块: simple = ${simple} sex = ${sex} age = ${age}")
         name = simple
+        println("初始化代码块: simple = ${simple} sex = ${sex} age = ${age} name = $name")
     }
 
 

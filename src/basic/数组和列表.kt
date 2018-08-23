@@ -2,27 +2,13 @@ package basic
 
 /**
  *  数组用类 Array 实现  使用 [] 重载了 get 和 set 方法
- *  ByteArray, ShortArray, IntArray，用来表示各个类型的数组，省去了装箱操作效率更高
+ *  ByteArray, ShortArray, IntArray，用来表示各个类型的数组，没有装箱开销
  */
 fun main(args: Array<String>) {
-    //使用函数arrayOf()创建数组
-    //[1,2,3]
-    val a = arrayOf(1,2,3)
-    //使用工厂函数创建数组
-    //[0,2,4]
-    val b = Array(3,{i -> i*2 })
-
-    for (i in a){
-        print(i)
-    }
-    println("========")
-    for (i in b){
-        print(i)
-    }
-    println("========")
+    createArray()
 
     //大小固定 元素类型不可变
-    var arraylist = arrayOf("重庆","上海","广州","深圳","北京","上海","深圳","北京","上海")
+    var arraylist = arrayOf("重庆", "上海", "广州", "深圳", "北京", "上海", "深圳", "北京", "上海")
 
     //遍历
     foreach(arraylist)
@@ -40,7 +26,7 @@ fun main(args: Array<String>) {
     //元素个数
     println("========")
     println("元素个数 " + arraylist.count())
-    println("数组是否为空 " +arraylist.isEmpty())
+    println("数组是否为空 " + arraylist.isEmpty())
 
     //获取其中元素：数组名[索引]，首元素：数组名.first，尾元素：数组名.last
     //获取前5个元素的快捷方法.component1到5
@@ -52,13 +38,13 @@ fun main(args: Array<String>) {
 
     //mutableList:MutableList<类型>或mutableListof(元素1.元素2，，，元素n)
     //大小可变 类型不变
-    var newArraylist = mutableListOf("1","2")
-    var tempList = arrayOf("成都","武汉")
+    var newArraylist = mutableListOf("1", "2")
+    var tempList = arrayOf("成都", "武汉")
     newArraylist.add("3")
     newArraylist.addAll(tempList)
 
 
-    for(item in newArraylist){
+    for (item in newArraylist) {
         print(item)
     }
     println("========")
@@ -67,16 +53,49 @@ fun main(args: Array<String>) {
     newArraylist.removeAt(0)
     newArraylist.removeAll(tempList)
 
-    for(item in newArraylist){
+    for (item in newArraylist) {
         print(item)
     }
     println("========")
 }
 
+/**
+ * 创建数组的3个函数
+ */
+fun createArray() {
+    //1. 使用函数arrayOf()创建数组
+    //[1,2,3]
+    val a = arrayOf(1, 2, 3)
+
+    //2. 使用工厂函数创建数组
+    //第一个参数表示数组元素的个数，第二个参数则为使用其元素下标组成的表达式
+    //[0,2,4]
+    val b = Array(3, { index -> index * 2 })
+
+    //3. 创建一个指定数据类型且可以为空元素的数组
+    val c = arrayOfNulls<Int>(3)
+
+
+    for (i in a) {
+        print(i)
+    }
+    println("========")
+    for (i in b) {
+        print(i)
+    }
+    println("========")
+
+    for (i in c) {
+        print("$i\t")
+    }
+    println("========")
+
+}
+
 fun sliceArray(list: Array<String>) {
     //获取数组中下标为1~4的数据
     val slice = list.slice(1..4)
-    for(item in slice){
+    for (item in slice) {
         print(item)
     }
 }
@@ -84,13 +103,13 @@ fun sliceArray(list: Array<String>) {
 fun removeDuplicates(list: Array<String>) {
     //返回一个去重后的List
     val norepeat = list.distinct()
-    for(item in norepeat){
+    for (item in norepeat) {
         print(item)
     }
 }
 
 fun foreach(list: Array<String>) {
-    for(item in list){
+    for (item in list) {
         print(item)
     }
 }
