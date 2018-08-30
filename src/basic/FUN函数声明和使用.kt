@@ -26,6 +26,17 @@ fun main(args: Array<String>) {
     //传递数组时，使用伸展操作符( * )
     val strArray = arrayOf("aaa", "bbb", "ccc", "ddd", "fff")
     varargFun(1, *strArray)
+
+
+    /**
+     * 匿名函数 没有函数名
+     */
+    val test = fun (x:Int,y:Int):Int{
+        return x+y
+    }
+
+    //同普通函数一样 返回值能推断出来也可省略括号
+    val test2 = fun (x:Int,y:Int) = x + y
 }
 
 //具有参数的函数定义  使用Pascal表示法定义，即为:name : type  多参数间用逗号隔开
@@ -65,3 +76,5 @@ fun varargFun(numA: Int, vararg str: String) {
         println(s)
     }
 }
+
+

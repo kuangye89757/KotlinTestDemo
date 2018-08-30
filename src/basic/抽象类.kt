@@ -12,11 +12,11 @@ fun main(args: Array<String>) {
  * 抽象父类
  */
 abstract class SwimPerson : Any() {
-
+    val TAG = this.javaClass.simpleName  // 自身的属性
     /**
-     *  1. 抽象属相在抽象类中不能被初始化
-        2. 在子类没有主构造函数，要对抽象属性，手动初始化。
-        如果子类中有主构造函数，抽象属性可以在主构造函数中声明
+     *  1. 抽象属性在抽象类中不能被初始化 【只有定义，没有实现】
+        2. 子类没有主构造函数，要对抽象属性，手动初始化。
+           子类中有主构造函数，抽象属性可以在主构造函数中声明
      */
     abstract var addr: String
     abstract val weight: Float
@@ -38,15 +38,14 @@ abstract class SwimPerson : Any() {
     }
 }
 
-/**
- * 子类
- */
+//有主构造函数，抽象属性可以在主构造函数中声明
 class SwimStudent(name: String, age: Int, override var addr: String, override val weight: Float) : SwimPerson() {
     override fun doSwim() {
 
     }
 }
 
+//没有主构造函数，要对抽象属性，手动初始化。
 class SwimChild : SwimPerson() {
     override var addr: String
         get() = ""

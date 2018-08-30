@@ -12,12 +12,22 @@ fun main(args: Array<String>) {
 }
 
 interface AA{
-//    var tmp:String = "1" 错误 接口中的属性只能是抽象的，不允许初始化值
-    var name:String //抽象的
+//    val tmp1:String = "1" //错误 接口中的属性只能是抽象的，不允许初始化值
+    val tmp:String
+        get() = "1" //可以通过提供访问器实现
+
+    var name:String //抽象的 修饰符只能是public
+//    internal var name:String
+//    private var name:String
+//    protected var name:String
+
+    //接口的私有方法 仅接口内使用
+    private fun privateFunc(){}
 
     fun foo() //未实现
     fun bar(){ //已实现
         //函数体
+        privateFunc()
         println("AA")
     }
 }
@@ -29,6 +39,10 @@ interface BB{
     fun bar(){
         println("BB")
     }
+
+    fun fun4() : String{
+        return "fun4"
+    }
 }
 
 class Child:AA,BB{
@@ -37,6 +51,7 @@ class Child:AA,BB{
     }
 
     override fun bar() {
+        //super<接口名>.方法名来区分
         super<AA>.bar()
         super<BB>.bar()
     }
@@ -45,7 +60,5 @@ class Child:AA,BB{
     override var name: String = "xxxx"
 
     //只需要实现未实现的接口方法
-
-
 
 }
