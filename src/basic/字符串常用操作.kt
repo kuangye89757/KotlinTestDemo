@@ -22,6 +22,12 @@ fun main(args: Array<String>) {
     findFunc()
     replaceFunc()
     splitFunc()
+
+    val str = "111::"
+//  过滤后影响长度
+//    val msg = str.split("::".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+    val msg = str.split("::".toRegex())
+    println("msg.size = ${msg.size}")
 }
 
 /**
