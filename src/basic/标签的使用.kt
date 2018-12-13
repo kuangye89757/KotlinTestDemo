@@ -14,24 +14,24 @@ fun foo() {
 
     //从最直接包围它的函数即 basic.foo 中返回 (同java)
     //输出结果 789
-//    ints.forEach {
-//        if (it == 0) return
-//        print(it)
-//    }
+    ints.forEach {
+        if (it == 0) return
+        print(it)
+    }
 
     //当遍历到0时 从 lambda 表达式中跳出
     //输出结果 78945
-//    ints.forEach lit@ {
-//        if (it == 0) return@lit
-//        print(it)
-//    }
+    ints.forEach lit@ {
+        if (it == 0) return@lit
+        print(it)
+    }
 
     //隐式标签更方便。 该标签与接受该 lambda 的函数同名 (同上效果)
     //输出结果 78945
-//    ints.forEach {
-//        if (it == 0) return@forEach
-//        print(it)
-//    }
+    ints.forEach {
+        if (it == 0) return@forEach
+        print(it)
+    }
 
     //匿名函数替代 lambda 表达式。
     //匿名函数内部的 return 语句将从该匿名函数自身返回

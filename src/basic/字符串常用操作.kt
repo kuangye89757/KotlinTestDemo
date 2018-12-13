@@ -79,7 +79,8 @@ fun subFunc() {
 fun replaceFunc() {
     val str = "Kotlin is a very good programming language"
 
-    //替换'a'的内容为A
+    //替换所有'a'的内容为A
+    println(str.replace('a','A'))
     println(str.replaceFirst('a','A'))
     println(str.replaceFirst( "Kotlin","Java"))
 

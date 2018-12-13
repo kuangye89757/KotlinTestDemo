@@ -97,7 +97,7 @@ fun extendFunc2(){
  * 扩展一个空对象 (这样任何类不重写toString方法都会执行Any的扩展方法)
  */
 fun Any?.toString():String{
-    if(this == null) return "我是一个空对象"
+    if(this == null) return "我是一个空对象\n"
     return toString()
 }
 

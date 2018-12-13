@@ -1,0 +1,4 @@
+package singleInstance
+
+object SingleTonDemo
+

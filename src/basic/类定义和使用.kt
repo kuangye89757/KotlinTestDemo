@@ -128,12 +128,22 @@ class Person(var simple: String, sex: Int) {
     var age: Int? = 0
 
 
+    /**
+     * 初始化代码段 使用init关键字
+     * 可以使用主构造函数中的参数
+     */
+    init {
+        simple = "重命名"
+//        sex = 2 //只读
+        name = simple
+        println("初始化代码块: simple = ${simple} sex = ${sex} age = ${age} name = $name")
+    }
 
 
     /**
      * 次构造函数 (晚于init初始化代码块)
      *      类已有主构造，则每个辅助构造需要通过另一个辅助构造直接或间接地委派给主构造
-     *      使用this关键字对同一类的另一个构造函数进行委派
+     *      使用this关键字对同类下另一个构造函数进行委派
      */
     constructor(simple: String, sex: Int, age: Int) : this(simple, sex) {
         println("次构造函数1 ${age}")
@@ -147,16 +157,6 @@ class Person(var simple: String, sex: Int) {
         println("次构造函数2 ${score}")
     }
 
-    /**
-     * 初始化代码段 使用init关键字
-     * 可以使用构造函数中的参数
-     */
-    init {
-        simple = "重命名"
-//        sex = 2 //只读
-        name = simple
-        println("初始化代码块: simple = ${simple} sex = ${sex} age = ${age} name = $name")
-    }
 
 
     /************************************setter and getter**********************************/
@@ -171,9 +171,15 @@ class Person(var simple: String, sex: Int) {
      * 所以若在setter或getter中使用的话会出现死循环 所以使用field
      *
      *
-     * 1.使用了val修饰的属性，不能有setter().
-    2.不管是val还是var修饰的属性，只要存在getter(),其值再也不会变化
-    3.使用var修饰的属性，可省略getter(),不然setter()毫无意义
+     *  1.使用了val修饰的属性，不能有setter().
+        2.不管是val还是var修饰的属性，只要存在getter(),其值再也不会变化
+        3.使用var修饰的属性，可省略getter(),不然setter()毫无意义
+
+
+        java中有使用setter and getter的地方可以转换成 属性
+            并重写set() get()
+
+
      */
     var lastName: String = "zhang"
         get() = field.toUpperCase()
@@ -283,6 +289,12 @@ interface OnClickListener {
 
 /**
  * object 是 Kotlin 的关键字 不能随意替换
+ *
+ * 先录入完demo.setOnClickListener(object : OnClickListener({
+ *
+ * })
+ *
+ * 之后object会爆红提示重写方法 之后alt+enter
  */
 fun classAnonymousFunc() {
     var demo = Test()
@@ -291,6 +303,6 @@ fun classAnonymousFunc() {
             println("对象表达式创建匿名内部类的实例")
         }
     })
-
     demo.testListener()
 }
+

@@ -20,10 +20,18 @@ fun main(args: Array<String>) {
     println("==================")
 
     //和逗号结合使用，相当于switch语句中的不使用break跳转语句
-    when(x){
-        1,2 -> print("x == 1 or x == 2")
-        else -> print("others")
+    //返回值接收的情况
+    var result = when(x){
+        1,2 -> {
+            print("x == 1 or x == 2")
+            "1"
+        }
+        else -> {
+            print("others")
+            "2"
+        }
     }
+    println("result = $result")
 
     //同if表达式效果
     when(x > 1){
@@ -38,7 +46,7 @@ fun main(args: Array<String>) {
     //使用in检测区间 (只适用于数值类型)
     var arrayList1 = arrayOf(1,2,3)
     when(x){
-        in 1..4 -> print("x在该区间[1-4]内")
+        in 1..4,6 -> print("x在该区间[1-4][6]内")
         in arrayList1 -> print("x在数组arrayList1内")
         !in 6..10 -> print("x不在该区间[6-10]内")
     }

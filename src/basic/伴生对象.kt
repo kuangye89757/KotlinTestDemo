@@ -15,6 +15,10 @@ class MyDemo {
     companion object {
         val myClassField1: Int = 1
         var myClassField2 = "this is myClassField2"
+
+        val MyDemo.Companion.no: Int
+            get() = 11
+
         fun companionFun1() {
             println("this is 1st companion function.")
             foo()
@@ -32,6 +36,7 @@ class MyDemo {
 
     fun test2() {
         MyDemo.foo()
+        println("no:${MyDemo.no}")
     }
 
     init {

@@ -14,8 +14,6 @@ fun main(args: Array<String>) {
     sum1(1, 2)
     printSum(2, 3)
     stringFormat()
-
-
     defArgs()
     defArgs(2)
 
@@ -27,6 +25,9 @@ fun main(args: Array<String>) {
     val strArray = arrayOf("aaa", "bbb", "ccc", "ddd", "fff")
     varargFun(1, *strArray)
 
+    for((index,value) in strArray.withIndex()){
+        println("索引$index,值为$value")
+    }
 
     /**
      * 匿名函数 没有函数名
@@ -34,9 +35,11 @@ fun main(args: Array<String>) {
     val test = fun (x:Int,y:Int):Int{
         return x+y
     }
+    println("test = ${test(1,2)}")
 
     //同普通函数一样 返回值能推断出来也可省略括号
     val test2 = fun (x:Int,y:Int) = x + y
+    println("test2 = ${test2(3,5)}")
 }
 
 //具有参数的函数定义  使用Pascal表示法定义，即为:name : type  多参数间用逗号隔开

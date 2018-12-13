@@ -63,7 +63,7 @@ sealed class Expr
 //所有子类
 data class Const(val number:Double):Expr()
 data class Sum(val e1:Expr,val e2:Expr):Expr()
-object NotANumber :Expr() //单例
+object NotANumber :Expr() //单例(饿汉式)
 
 fun eval(expr:Expr):Double = when(expr){
     is Const -> expr.number

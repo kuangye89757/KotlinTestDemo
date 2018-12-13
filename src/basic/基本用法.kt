@@ -41,11 +41,12 @@ package basic
                 */
             */
         */
- *  6.Kotlin中冒号(:)使用的地方很多：
+    6.Kotlin中冒号(:)使用的地方很多：
         用于变量的定义
         用于继承
         用于接口
         方法的返回类型声明
+
  *
  *
  *
@@ -70,7 +71,8 @@ fun main(args: Array<String>) {
 
     println("NUM_A => $NUM_A")
     println("NUM_B => ${TestConst.NUM_B}")
-    println("NUM_C => ${TestClass.NUM_C}")
+    println("NUM_C => ${TestConst.NUM_C}")
+    println("NUM_D => ${TestClass.NUM_D}")
 }
 
 
@@ -83,12 +85,15 @@ const val NUM_A : String = "顶层声明"
 
 //2.object修饰的类中
 object TestConst{
-    const val NUM_B = "object修饰的类中"
+    const val NUM_B = "常量NUM_B"
+
+    //java文件使用时 会使用TestConst.INSTANCE.getNUM_C()访问
+    val NUM_C = "单例TestConst的常量NUM_C"
 }
 
 //3.伴生对象中
 class TestClass{
     companion object {
-        const val NUM_C = "伴生对象中"
+        const val NUM_D = "伴生对象中"
     }
 }

@@ -133,7 +133,7 @@ fun sliceArray(list: Array<String>) {
 }
 
 fun removeDuplicates(list: Array<String>) {
-    //返回一个去重后的List
+    //返回一个去重后的数组
     val norepeat = list.distinct()
     for (item in norepeat) {
         print(item)
@@ -263,7 +263,7 @@ fun testXB(){
         牢记toList()、toSet()、toHastSet()、toMutableList()、toSet()、toIntArray()等扩展函数
      *
      */
-    val listChildrens1 : List<Childrens> = listOf<Childrens>(Childrens("wang",24), Childrens("zhou",25))
+    val listChildrens1 : List<Childrens> = listOf(Childrens("wang",24), Childrens("zhou",25))
     val listPersonals2 : MutableList<Personals>
     listPersonals2 = listChildrens1.toMutableList() //List转换成了MutableList
     listPersonals2.add(Childrens("zhang",27))
